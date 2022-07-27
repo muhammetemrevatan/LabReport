@@ -1,18 +1,22 @@
 
 # Özet yazısı
->Proje laboratuvar için rapor ekleme uygulamasıdır. Laborant hastaların tanısını koyduktan sonra hastalıkla ilgili raporu sisteme kayıt eder. Proje yetkilendirme mekanizması içermektedir. User yetkisine sahip olan kullanıcı ekleme ve silme yapabilirken güncelleme yapamaz. Admin her ikisini yapabilir. Temel create,update ve delete işlemlerini içerir.
+Proje laboratuvar için rapor ekleme uygulamasıdır. Laborant hastaların tanısını koyduktan sonra hastalıkla ilgili raporu sisteme kayıt eder. Proje yetkilendirme mekanizması içermektedir. User yetkisine sahip olan kullanıcı ekleme ve silme yapabilirken güncelleme yapamaz. Admin her ikisini yapabilir. Temel create,update ve delete işlemlerini içerir.
 
 # Başlarken
  
 #### Proje nasıl oluşturuldu?
-> https://start.spring.io/ sayfası üzerinden aşağıdaki şekilde görüldüğü gibi kullanacağımız dependency'leri ekleyip gerekli isimlendirmeleri yaparak projeyi oluşturmamız gerekiyor.
+https://start.spring.io/ sayfası üzerinden aşağıdaki şekilde görüldüğü gibi kullanacağımız dependency'leri ekleyip gerekli isimlendirmeleri yaparak projeyi oluşturmamız gerekiyor.
+
 ![springiniti](https://user-images.githubusercontent.com/44151025/181365946-f86a7763-3b43-4ecf-bddb-aebcb701ef0a.PNG)
+
 #### Neden lombok?
->Getter ve setter'ları bizim için otomatik olarak reflaction yöntemi ile hallediyor. Boş ve dolu constructer oluşturmamıza yardımcı oluyor. Daha az ve temiz kod yazmak için bu projeye severek kullandığım lombok kod üretme kütüphanesini ekledim.
+Getter ve setter'ları bizim için otomatik olarak reflaction yöntemi ile hallediyor. Boş ve dolu constructer oluşturmamıza yardımcı oluyor. Daha az ve temiz kod yazmak için bu projeye severek kullandığım lombok kod üretme kütüphanesini ekledim.
 
 # Projede kullanılan teknoloji ve metotlar
->Spring, Tyhmeleaf, JPA, Maven, Bootstrap teknolojileri kullanılarak oluşturulmuştur. N-Layer Architecture (Katmanlı Mimari) anlayışı kullanılmıştır. Proje Entities, dataAccess, core, business ve api.controllers katmanlarından oluşuyor.
+Spring, Tyhmeleaf, JPA, Maven, Bootstrap teknolojileri kullanılarak oluşturulmuştur. N-Layer Architecture (Katmanlı Mimari) anlayışı kullanılmıştır. Proje Entities, dataAccess, core, business ve api.controllers katmanlarından oluşuyor.
+
 ![nlayered](https://user-images.githubusercontent.com/44151025/181367943-61cee045-d3d5-488c-9150-a689b21f10fe.PNG)
+
 > - Entities Katmanı : Varlıkları yapılandırdığımız katman. Veritabanımızda bulunan tabloların karşılığı olabilecek özellik ve operasyon tutan sınıfları buraya kodlarız. Yardımcı bir katmandır.
 > - dataAccess Katmanı : Veriye erişim sağladığımız katman. Biraz daha açmak gerekirse bu projede kullanıdığımız postgresql veritabanına bağlanmak ve oradan verileri çekmek için kullandığımız katman. Bu katmanda veriye erişim dışında asla bir kod yazılmaz.
 > - Core Katmanı : Projelerde kullanılabilecek farklı yapıları bu katmanda kodlarız. Örneğin mernis sistemi eklememiz gerekirse bu katmanda kodlayabiliriz.
@@ -21,12 +25,14 @@
 
 #### Database
 
->Bu proje küçük çaplı bir proje olduğu için ilişkisel veritabanı kullanmak daha doğru olacaktır. Postgresql son zamanlarda popülerlik kazandığı için bu veritabanını kullanma kararı aldım. Aşağıdaki şekilde görüldüğü gibi fiziksel rapora ait bir resim, 7 haneli hastane kimlik numarası gibi isterler yerine getirilmiştir. Ayrıca bir rapor yalnızca bir laborant tarafından tanımlanmış olmalı. Bir laborant ise n tane rapor tanımlayabilir.
+Bu proje küçük çaplı bir proje olduğu için ilişkisel veritabanı kullanmak daha doğru olacaktır. Postgresql son zamanlarda popülerlik kazandığı için bu veritabanını kullanma kararı aldım. Aşağıdaki şekilde görüldüğü gibi fiziksel rapora ait bir resim, 7 haneli hastane kimlik numarası gibi isterler yerine getirilmiştir. Ayrıca bir rapor yalnızca bir laborant tarafından tanımlanmış olmalı. Bir laborant ise n tane rapor tanımlayabilir.
 Proje diyagramı aşağıda gösterişmiştir.
+
 ![DatabaseDiagram](https://user-images.githubusercontent.com/44151025/181372506-f265f1a6-7a56-4232-a358-7c2473d4c60a.PNG)
+
 Sonradan dahil etmeyi düşündüğüm authentication işlemleri için login tablosu oluşturdum. 
->###### Not: 
->Projenin çalıştırılabilmesi için pgAdmin 14 indirilip kurulması ve ardından aşğıdaki script kullanılarak lapreport isimli bir database oluşturulması gereklidir.
+###### Not: 
+Projenin çalıştırılabilmesi için pgAdmin 14 indirilip kurulması ve ardından aşğıdaki script kullanılarak lapreport isimli bir database oluşturulması gereklidir.
 #### Database Script
 
 
@@ -143,48 +149,65 @@ SET row_security = off;
 
 
 # Gereklilikler
-> Bu projede java 17 ve maven 3.8 versiyonlarını kullandım. Olası bir uyumsuzluk olmaması için projeyi çalıştırmadan önce versiyonları kontrol etmek iyi olacaktır.
+Bu projede java 17 ve maven 3.8 versiyonlarını kullandım. Olası bir uyumsuzluk olmaması için projeyi çalıştırmadan önce versiyonları kontrol etmek iyi olacaktır.
+
 ![mvnandjavaversion](https://user-images.githubusercontent.com/44151025/181373477-c0719afa-f5f9-49fb-ac78-afbe7157e748.PNG)
 
 # Nasıl kurulur?
 
->İlk önce projenin kaynak dosyalarını indirmemiz gerkiyor. İsterseniz git kullanarak veya doğrudan https://github.com/muhammetemrevatan/LabReport adresi üzerinizden aşağıdaki görselde 'Download ZIP' yazısına tıklayarak projeyi bilgisayara indirebilirsiniz. 
+İlk önce projenin kaynak dosyalarını indirmemiz gerkiyor. İsterseniz git kullanarak veya doğrudan https://github.com/muhammetemrevatan/LabReport adresi üzerinizden aşağıdaki görselde 'Download ZIP' yazısına tıklayarak projeyi bilgisayara indirebilirsiniz. 
+
 ![gitpath](https://user-images.githubusercontent.com/44151025/181375132-a3f970c9-e5b7-49c2-86a6-47a4a3f9e8b2.PNG)
+
 İndirilen dosya bir rar dosyası olacağı için dosayayı indirdikten sonra zip içerisinden çıkarmamız gerekecektir.
+
 ![klosereayikla](https://user-images.githubusercontent.com/44151025/181375832-2e340731-a34c-428e-8eae-2647684e0e60.png)
+
 Bu işlemlerden sonra projeyi istediğiniz bir workspace üzerine, bilgisayarınzı herhangi bir klasörüne taşıyabilir veya bu şekilde bırakabilirsiniz.
 Ayrıca bilgisayarınızda bir maven kurulu değilse https://maven.apache.org/download.cgi bu adresi kullanarak bir maven kurmanız gerekmektedir. 
+
 ![maven](https://user-images.githubusercontent.com/44151025/181376384-d290c186-b610-418d-ab2a-55f53a3309f4.PNG)
+
 İşaretlemiş olduğum zip uzantılı dosyayı bilgisayarınıza indirip yukarı göstermiş olduğum gibi zip içerisinden çıkarttıntan sonra bilgisayarınızda  C:\Program Files dizinine  apache-maven-3.8.6 isimli klasörü ekleyebilirsiniz.
 Projeyi IDE'siz yürütebilmek adına cmd üzerinden bazı kodlar yazmamız gerekiyor. Compile etmeden önce projeyi indirdiğimiz dizine gitmeliyiz. 
 > - cd C:\Users\vatan\Desktop\report
--![location](https://user-images.githubusercontent.com/44151025/181377479-e3f6658e-8251-4acb-9d72-f6a9a0e850b8.PNG)
+
+![location](https://user-images.githubusercontent.com/44151025/181377479-e3f6658e-8251-4acb-9d72-f6a9a0e850b8.PNG)
+
 Bu dizin içerisinden maven dosyalarına erişimi kontrol etmek için tekrar versiyon kontrolü yapabiliriz. 
 > - mvn -v
- -![mavencontrol](https://user-images.githubusercontent.com/44151025/181377685-a3c700cc-eb12-432a-85cf-b8ce0700dd77.PNG)
- Projeyi temiz bir şekilde çalıştırabilmek için projeyi build etmemiz önemlidir. Bu yüzden komut satırına mvn install yazıyoruz.
+
+![mavencontrol](https://user-images.githubusercontent.com/44151025/181377685-a3c700cc-eb12-432a-85cf-b8ce0700dd77.PNG)
+
+Projeyi temiz bir şekilde çalıştırabilmek için projeyi build etmemiz önemlidir. Bu yüzden komut satırına mvn install yazıyoruz.
 > - mvn install
--![build](https://user-images.githubusercontent.com/44151025/181378311-46c9aab8-217c-4e89-a674-ba56a533b40b.PNG)
+
+![build](https://user-images.githubusercontent.com/44151025/181378311-46c9aab8-217c-4e89-a674-ba56a533b40b.PNG)
+
 Projeyi çalıştırmak için jar dosyasının bulunduğu dizine gitmeliyiz. cd target yazarak target klasörünün içerisine giriyoruz.
 > - cd target
--![gototargetfile](https://user-images.githubusercontent.com/44151025/181378736-0c01a7a1-6d78-4298-b1e9-bff48a0854a2.PNG)
+
+![gototargetfile](https://user-images.githubusercontent.com/44151025/181378736-0c01a7a1-6d78-4298-b1e9-bff48a0854a2.PNG)
+
 Artık projeyi çalıştırabiliriz bunu için yapmamız gereken son şey aşağıdaki kodu yazıp projeyi koşturmak.
 > - java -jar report-0.0.1-SNAPSHOT.jar
--![runnig](https://user-images.githubusercontent.com/44151025/181379030-1a29a645-d506-4f50-a342-b7bcc82113c2.PNG)
+
+![runnig](https://user-images.githubusercontent.com/44151025/181379030-1a29a645-d506-4f50-a342-b7bcc82113c2.PNG)
+
 Ve artık tamam. Proje başarılı bir şekilde çalışıyor. localhost:8080 üzerinde yayında.
 # Proje kullanımı esnasında
 >Browser'ın URL kısmına http://localhost:8080/api/reportdefinition/reportdetailspage yazarak bağlanıyoruz. Bir yetkilendirme mekanızması olduğu için admin veya user olarak giriş yapmamız gerekiyor.
 > - admin için : Kullanıcı Adı: **admin** / Şifre: **admin**
 > - user için : Kullanıcı Adı: **user** / Şifre: **user**  
 >
->Bu şekide sisteme giriş yaparak projeyi deneyebilirsiniz. Eklemek istedikleriniz ve eleştirileriniz benim için çok kıymetlidir. Zaman ayırdığınız için teşekkürler.
+Bu şekide sisteme giriş yaparak projeyi deneyebilirsiniz. Eklemek istedikleriniz ve eleştirileriniz benim için çok kıymetlidir. Zaman ayırdığınız için teşekkürler.
 
 # Katkı veren(ler)
->Öncelikle projeye başlamama vesile olan Özgür İletişim'e çok teşekkür ediyorum. Sorularıma her zaman cevap veren Gizem hanım ve takıldığım yerde yardımcı olan Doruk bey'e ayrıca teşekkür ediyorum.
+Öncelikle projeye başlamama vesile olan Özgür İletişim'e çok teşekkür ediyorum. Sorularıma her zaman cevap veren Gizem hanım ve takıldığım yerde yardımcı olan Doruk bey'e ayrıca teşekkür ediyorum.
 
->Projeyi hazırlayan : Muhammet Emre VATAN
-Linkedin : https://www.linkedin.com/in/muhammetemrevatan/
-Mail : <muhammetemrevatan@gmail.com>
+Projeyi hazırlayan : Muhammet Emre VATAN
+- Linkedin : https://www.linkedin.com/in/muhammetemrevatan
+- Mail : <muhammetemrevatan@gmail.com>
 
 # Kaynaklar
 
