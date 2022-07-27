@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[[${pageTitle}]]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-3">
+        <div class="container-fluid ms-5">
+          <a class="navbar-brand" href="/api/reportdefinition/reportdetailspage"> <b>Rapor Detayları</b> </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav me-auto ms-3">
+              <li class="nav-item ms-3">
+                <a class="nav-link" href="/api/reportdefinition/reportdetailspage">AnaSayfa</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/api/reportdefinition/reportdetailspage">Çıkış Yap</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+    <div class="p-4">
+            <div class="container">
+                <div class="mt-0">
+                    <h2 class="mb-3 mt-2 text-center">[[${pageTitle}]]</h2>
+                    <div class="col-sm-8 offset-sm-2">
+	                    <form th:action="@{/api/reportdefinition/reportdetailspage/createreport}" th:object="${reportDefinition}" method="POST">
+	                    
+	                    <input type="hidden" th:field="*{id}">
+	                    
+	                      <div class="mb-3 mt-3">
+	                        <label for="" class="form-label h5" >Laborant</label>
+	                        <select th:field = "*{laborant}" class="form-control form-select" aria-label="Default select example">
+	                        	<option th:each="x : ${listLaborant}" th:value="${x.id}" th:text=${x.fullName}/>
+	                        </select>
+	                      </div>
+	                      
+	                      <div class="mb-3 mt-3">
+	                        <label class="form-label h5" >Hasta</label>
+	                        <select th:field = "*{patient}" class="form-control form-select" aria-label="Default select example">
+	                        	<option th:each="x : ${listPatient}" th:value="${x.id}" th:text=${x.fullName} />
+	                        </select>
+	                      </div>
+	                      
+	                      <div class="mb-3 mt-3">
+	                        <label class="form-label h5" >Rapor Başlığı</label>
+	                        <input type="text" name="diagnosisTitle" th:field = "*{diagnosisTitle}" class="form-control">
+	                        <div role="alert">
+		                        <div th:if="${#fields.hasErrors('diagnosisTitle')}" th:errors="*{diagnosisTitle}" class="alert alert-warning alert-dismissible fade show h-50">
+		                        	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		                        </div>
+	                        </div>
+	                      </div>
+	                      
+	                      <div class="mb-3 mt-3">
+	                        <label class="form-label h5" >Rapor Tarihi</label>
+	                        <input type="date" name="reportDate" th:field = "*{reportDate}" class="form-control">
+	                        <div role="alert">
+		                        <div th:if="${#fields.hasErrors('reportDate')}" th:errors="*{reportDate}" class="alert alert-warning alert-dismissible fade show h-50">
+		                        	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		                        </div>
+	                        </div>
+	                      </div>
+	                      
+	                      <div class="mb-3 mt-3">
+	                        <label class="form-label h5" >Rapor Resmi</label>
+	                        <input type="file" name="reportImage" th:field = "*{reportImage}" class="form-control">
+	                        <div role="alert">
+		                        <div th:if="${#fields.hasErrors('reportImage')}" th:errors="*{reportImage}" class="alert alert-warning alert-dismissible fade show h-25">
+		                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		                        </div>
+	                        </div>
+	                      </div>
+	                      
+	                      <div class="mb-3 mt-3">
+	                        <label class="form-label h5" >Rapor Detayları</label>
+	                        <textarea name="diagnosisDetail" th:field = "*{diagnosisDetail}" class="form-control" rows="5"></textarea>
+	                        <div role="alert">
+		                        <div th:if="${#fields.hasErrors('diagnosisDetail')}" th:errors="*{diagnosisDetail}" class="alert alert-warning alert-dismissible fade show h-50">
+		                        	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		                        </div>
+	                        </div>
+	                      </div>
+	                      <div class="btn-group form-control" style="border-style:none" >
+	                      	<button type="submit" class="btn btn-success btn-lg">Kaydet</button>
+	                      	<button type="button" class="btn btn-danger btn-lg" onclick="cancelForm()">Vazgeç</button>
+	                      	<button type="reset" class="btn btn-info btn-lg">Temizle</button>
+	                      </div>
+	                    </form>
+                    </div>
+                  </div>
+            </div>
+    </div>
+    
+    <script>
+    	function cancelForm(){
+    		window.location = "[[@{/api/reportdefinition/reportdetailspage}]]"
+    	}
+    </script>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>
