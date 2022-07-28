@@ -1,6 +1,6 @@
 
 # Özet yazısı
-Proje laboratuvar için rapor ekleme uygulamasıdır. Laborant hastaların tanısını koyduktan sonra hastalıkla ilgili raporu sisteme kayıt eder. Proje yetkilendirme mekanizması içermektedir. User yetkisine sahip olan kullanıcı ekleme ve silme yapabilirken güncelleme yapamaz. Admin her ikisini yapabilir. Temel create,update ve delete işlemlerini içerir.
+Proje, laboratuvar için rapor ekleme uygulamasıdır. Laborant hastaların tanısını koyduktan sonra hastalıkla ilgili raporu sisteme kayıt eder. Proje yetkilendirme mekanizması içermektedir. User yetkisine sahip olan kullanıcı ekleme ve silme yapabilirken güncelleme yapamaz. Admin her ikisini yapabilir. Temel create,update ve delete işlemlerini içerir.
 
 # Başlarken
  
