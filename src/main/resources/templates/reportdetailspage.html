@@ -24,6 +24,12 @@
                 <a class="nav-link" href="/api/reportdefinition/reportdetailspage">Çıkış Yap</a>
               </li>
             </ul>
+            
+            <form class="d-flex" method="get" th:action="@{/api/reportdefinition/reportdetailspage}">
+		      <input class="form-control me-2" type="text" placeholder="Arama" name="keyword">
+		      <button class="btn btn-primary" type="submit">Ara</button>
+		    </form>
+		    
           </div>
         </div>
       </nav>
@@ -53,6 +59,7 @@
                    <th>No</th>
                    <th>Laborant Adı</th>
                    <th>Hasta Adı</th>
+                   <th>Tc No</th>
                    <th>Rapor Başlığı</th>
                    <th>ID</th>
                    <th>Düzenle</th>
@@ -65,6 +72,7 @@
                    <td th:text="${iterator.index} + 1"></td>
                    <td th:text="${x.laborant.fullName}"></td>
                    <td th:text="${x.patient.fullName}"></td>
+                   <td th:text="${x.patient.patientTc}"></td>
                    <td th:text="${x.diagnosisTitle}"></td>
                    <td th:text="${x.id}"></td>
                    <td>

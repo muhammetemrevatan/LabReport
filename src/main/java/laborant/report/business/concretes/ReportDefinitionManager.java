@@ -77,6 +77,11 @@ public class ReportDefinitionManager implements ReportDefinitionService{
 	public ReportDefinition getReportDefinition(int id) {
 		return this.reportDefinitionDao.getById(id);
 	}
+
+	@Override
+	public List<ReportDefinition> findByKeyword(String keyword) {
+		return this.reportDefinitionDao.findByKeyword(keyword);
+	}
 	
 	
 	

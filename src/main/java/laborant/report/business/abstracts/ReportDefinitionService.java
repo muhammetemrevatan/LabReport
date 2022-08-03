@@ -15,5 +15,6 @@ public interface ReportDefinitionService {
 	//void update(ReportDefinition reportDefinition);
 	void delete(int reportDefinitionId);
 	ReportDefinition getReportDefinition(int id);
+	List<ReportDefinition> findByKeyword(String keyword);
 	
 } 

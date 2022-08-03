@@ -34,11 +34,26 @@ public class ReportDefinitionsController {
 		this.definitionService = definitionService; 
 	}
 	
+	
+	
+	
+	
+	
 	@GetMapping("/reportdetailspage")
-	public String getReportDetailsPage(Model model,ReportDefinition reportDefinition) {
-		model.addAttribute("getalls",getAll());
-		return "reportdetailspage";  
+	public String getReportDetailsPage(Model model, String keyword) {
+		
+		if(keyword != null) {
+			model.addAttribute("getalls", definitionService.findByKeyword(keyword));
+		}else {
+			model.addAttribute("getalls",getAll());
+		}
+		return "reportdetailspage";
 	} 
+	
+	
+	
+	
+	
 	 
 	@GetMapping("reportdetailspage/createreport")
 	public String showCreateForm(Model model) {
@@ -58,7 +73,7 @@ public class ReportDefinitionsController {
 			return "createreport";
 		}else {
 			this.add(reportDefinition);
-			rAtt.addFlashAttribute("message", "Kullanıcı başarıyla eklendi.");
+			rAtt.addFlashAttribute("message", "Rapor başarıyla eklendi.");
 			model.addAttribute("getalls",getAll());
 			return "reportdetailspage";
 		}
@@ -75,7 +90,7 @@ public class ReportDefinitionsController {
 			model.addAttribute("pageTitle", "Rapor Düzenleme Sayfası ( ID :" + id + ")");
 			return "createreport";
 		} catch (Exception e) {
-			rAtt.addAttribute("message", "Kullanıcı kaydedildi.");
+			rAtt.addAttribute("message", "Rapor kaydedildi.");
 			return "reportdetailspage";
 		}
 		
@@ -93,6 +108,7 @@ public class ReportDefinitionsController {
 	public List<ReportDefinition> getAll(){
 		return this.definitionService.getAll();
 	} 
+	
 	
 	public void add(ReportDefinition reportDefinition) {
 		this.definitionService.add(reportDefinition); 
