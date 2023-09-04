@@ -202,9 +202,6 @@ Ve artık tamam. Proje başarılı bir şekilde çalışıyor. localhost:8080 ü
 >
 Bu şekide sisteme giriş yaparak projeyi deneyebilirsiniz. Eklemek istedikleriniz ve eleştirileriniz benim için çok kıymetlidir. Zaman ayırdığınız için teşekkürler.
 
-# Katkı veren(ler)
-Öncelikle projeye başlamama vesile olan Özgür İletişim'e çok teşekkür ediyorum. Sorularıma her zaman cevap veren Gizem hanım ve takıldığım yerde yardımcı olan Doruk bey'e ayrıca teşekkür ediyorum.
-
 Projeyi hazırlayan : Muhammet Emre VATAN
 - Linkedin : https://www.linkedin.com/in/muhammetemrevatan
 - Mail : <muhammetemrevatan@gmail.com>
