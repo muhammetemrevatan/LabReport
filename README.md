@@ -1,5 +1,30 @@
+---
+# Project Basic Information
+title: "Laboratory Report Management System"
+description: "A comprehensive laboratory reporting system with role-based authentication, built using Spring Boot and PostgreSQL, featuring patient diagnosis and report management"
+showcase: true
+order: 5
 
-# Özet yazısı
+# Technologies
+technologies:
+  - "Java 17"
+  - "Spring Boot"
+  - "PostgreSQL"
+  - "Thymeleaf"
+  - "Bootstrap"
+  - "Maven"
+  - "JPA"
+
+# Features
+features:
+  - "Role-based Authentication (Admin/User)"
+  - "Patient Diagnosis Management"
+  - "Report Generation and Storage"
+  - "N-Layer Architecture"
+  - "Database Relationship Management"
+---
+
+# Özet
 Proje, laboratuvar'da konulan tanılar için rapor ekleme uygulamasıdır. Laborant hastaların tanısını koyduktan sonra hastalıkla ilgili raporu sisteme kayıt eder. Proje yetkilendirme mekanizması içermektedir. User yetkisine sahip olan kullanıcı ekleme ve silme yapabilirken güncelleme yapamaz. Admin her ikisini yapabilir. Temel create,update ve delete işlemlerini içerir.
 
 # Başlarken
