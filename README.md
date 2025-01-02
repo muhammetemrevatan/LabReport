@@ -3,7 +3,7 @@
 title: "Laboratory Report Management System"
 description: "A comprehensive laboratory reporting system with role-based authentication, built using Spring Boot and PostgreSQL, featuring patient diagnosis and report management"
 showcase: true
-order: 5
+order: 7
 
 # Technologies
 technologies:
